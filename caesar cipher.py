@@ -47,6 +47,8 @@ for number in orig_numeric:
     new_number = number + op * key
     if new_number >= 27:
         new_number = new_number - 26
+    elif new_number <= 0:
+        new_number = new_number + 26
     output_numeric.append(new_number)
 
 output_char = []
