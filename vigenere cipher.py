@@ -74,3 +74,4 @@ if op == 1:
 
 print("Your new text is:")
 print(output_final)
+input("Press enter to exit")
