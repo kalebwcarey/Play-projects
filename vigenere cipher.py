@@ -70,7 +70,8 @@ output_final = ""
 output_final = output_final.join(output_char)
 output_final = str(output_final)
 if op == 1:
-    output_final.upper()
+    output_final = output_final.upper()
 
 print("Your new text is:")
 print(output_final)
+input("Press enter to exit")
