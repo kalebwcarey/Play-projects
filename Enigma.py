@@ -102,15 +102,21 @@ def reflector_action(which_reflector, n, text):
     return
 
 
+def strip(to_be):
+    to_be = to_be.replace(" ", "").replace(".", "").replace(",", "").replace("?", "").replace("!", "").replace(";", "")
+    to_be = to_be.replace(":", "").replace("\"", "").replace("\'", "").replace("/", "").replace("-", "")
+    return to_be
+
+
 rotor = []
 switch = 0
 reflector = {}
 acted_text = 0
 print("Welcome to the Enigma Machine simulator! This simulator utilizes 3 rotors with 6 options and a rotating "
       "reflector with three options. The rotors do not replicate the shift of the historical rotors, but do function "
-      "the "
-      "same. This simulator also does not replicate the function of the plugboard, as that is just a simple "
-      "substitution cipher, would be painful to input, and doe very little to increase the security of the enigma.")
+      "the ")
+print("same. This simulator also does not replicate the function of the plugboard, as that is just a simple "
+      "substitution cipher, would be painful to input, and does very little to increase the security of the enigma.")
 input("Press the enter key to begin.")
 while True:
     ro1 = input("Which rotor would you like to put in the first slot? (A whole number between 1 and 6)")
@@ -179,11 +185,9 @@ while True:
         break
 
 while True:
-    orig = str(input(
+    orig = strip(str(input(
         "What text would you like to encode/decode? (No special characters. Numbers must be typed. Ex: 1 would be "
-        "\"one\")"))
-    orig = orig.replace(" ", "").replace(".", "").replace(",", "").replace("?", "").replace("!", "")
-    orig = str(orig)
+        "\"one\")")))
     if orig.isalpha():
         break
 orig = orig.lower()
