@@ -25,47 +25,22 @@ reflector3 = {1: 8, 8: 1, 13: 3, 3: 13, 4: 6, 6: 4, 14: 23, 23: 14, 22: 7, 7: 22
 
 
 def rotor_select(x):
+    rotor_dictionary = {1:rotor1,2:rotor2,3:rotor3,4:rotor4,5:rotor5,6:rotor6}
     global rotor
-    if x == 1:
-        rotor = rotor1
-    elif x == 2:
-        rotor = rotor2
-    elif x == 3:
-        rotor = rotor3
-    elif x == 4:
-        rotor = rotor4
-    elif x == 5:
-        rotor = rotor5
-    elif x == 6:
-        rotor = rotor6
+    rotor = rotor_dictionary[x]
     return
 
 
 def switch_select(x):
+    switch_dictionary = {1:switch1,2:switch2,3:switch3,4:switch4,5:switch5,6:switch6}
     global switch
-    if x == 1:
-        switch = switch1
-    elif x == 2:
-        switch = switch2
-    elif x == 3:
-        switch = switch3
-    elif x == 4:
-        switch = switch4
-    elif x == 5:
-        switch = switch5
-    elif x == 6:
-        switch = switch6
-    return
+    return switch_dictionary[x]
 
 
 def reflector_select(x):
+    reflector_dictionary = {1:reflector1,2:reflector2,3:reflector3}
     global reflector
-    if x == 1:
-        reflector = reflector1
-    elif x == 2:
-        reflector = reflector2
-    elif x == 3:
-        reflector = reflector3
+    reflector = reflector_dictionary[x]
     return
 
 
@@ -197,12 +172,9 @@ for character in orig:
     number = ord(character) - 97
     orig_numeric.append(number)
 
-switch_select(ro1)
-_1switch = switch
-switch_select(ro2)
-_2switch = switch
-switch_select(ro3)
-_3switch = switch
+_1switch = switch_select(ro1)
+_2switch = switch_select(ro2)
+_3switch = switch_select(ro3)
 reflector_select(ref)
 
 output_numeric = []
