@@ -88,65 +88,22 @@ reflector4 = {55: 83, 79: 45, 76: 91, 87: 53, 9: 49, 69: 16, 73: 21, 36: 68, 32:
 
 
 def rotor_select(x):
+    rotor_dictionary = {1:rotor1,2:rotor2,3:rotor3,4:rotor4,5:rotor5,6:rotor6,7:rotor7,8:rotor8,9:rotor9,10:rotor10}
     global rotor
-    if x == 1:
-        rotor = rotor1
-    elif x == 2:
-        rotor = rotor2
-    elif x == 3:
-        rotor = rotor3
-    elif x == 4:
-        rotor = rotor4
-    elif x == 5:
-        rotor = rotor5
-    elif x == 6:
-        rotor = rotor6
-    elif x == 7:
-        rotor = rotor7
-    elif x == 8:
-        rotor = rotor8
-    elif x == 9:
-        rotor = rotor9
-    elif x == 10:
-        rotor = rotor10
+    rotor = rotor_dictionary[x]
     return
 
 
 def switch_select(x):
+    switch_dictionary = {1:switch1,2:switch2,3:switch3,4:switch4,5:switch5,6:switch6,7:switch7,8:switch8,9:switch9,10:switch10}
     global switch
-    if x == 1:
-        switch = switch1
-    elif x == 2:
-        switch = switch2
-    elif x == 3:
-        switch = switch3
-    elif x == 4:
-        switch = switch4
-    elif x == 5:
-        switch = switch5
-    elif x == 6:
-        switch = switch6
-    elif x == 7:
-        switch = switch7
-    elif x == 8:
-        switch = switch8
-    elif x == 9:
-        switch = switch9
-    elif x == 10:
-        switch = switch10
-    return
+    return switch_dictionary[x]
 
 
 def reflector_select(x):
+    reflector_dictionary = {1:reflector1,2:reflector2,3:reflector3,4:reflector4}
     global reflector
-    if x == 1:
-        reflector = reflector1
-    elif x == 2:
-        reflector = reflector2
-    elif x == 3:
-        reflector = reflector3
-    elif x == 4:
-        reflector = reflector4
+    reflector = reflector_dictionary[x]
     return
 
 
@@ -167,7 +124,6 @@ def rotor_action_reverse(which_rotor, n, text):
     acted_text = acted_text - n
     if acted_text <= -1:
         acted_text += 94
-
     return
 
 
@@ -187,10 +143,19 @@ rotor = []
 switch = 0
 reflector = {}
 acted_text = 0
+n4 = n5 = n6 = n7 = -1
+ro1 = ro2 = ro3 = ro4 = ro5 = ro6 = ro7 = 0
 print("Welcome to the Improved Enigma Machine simulator! This simulator mimics the mechanics of the enigma machine ("
       "except without the plugboard), but with larger and more complex rotors,")
 print("allowing more secure encryption and encoding of sentences with spaces and punctuation.")
 input("Press the enter key to begin.")
+while True:
+    number_of_rotors = input("would you like to use 3, 5, or 7 rotors?")
+    if 3 <= int(number_of_rotors) <= 7 and float(number_of_rotors) % 2 == 1:
+        number_of_rotors = int(number_of_rotors)
+        break
+    else:
+        print("Invalid input please type either 3, 5, or 7")
 while True:
     ro1 = input("Which rotor would you like to put in the first slot? (A whole number between 1 and 10)")
     if len(ro1) >= 3 or int(ro1) <= 0 or int(ro1) >= 11:
@@ -235,7 +200,64 @@ while True:
     else:
         n3 = int(n3)
         break
-
+if number_of_rotors > 3:
+    while True:
+        ro4 = input("Which rotor would you like to put in the 4th slot? (A whole number between 1 and 10)")
+        if len(ro4) >= 3 or int(ro4) <= 0 or int(ro4) >= 11:
+            print("Invalid input. Please enter a whole number between 1 and 10.")
+        else:
+            ro4 = int(ro4)
+            break
+    while True:
+        n4 = float(input("Which initial position would you like the 4th rotor in? (A whole number between 1 and 94)")) - 1
+        if int(n4) != float(n4) or int(n4) <= -1 or int(n4) >= 94:
+            print("Invalid input. Please enter a whole number between 1 and 94.")
+        else:
+            n4 = int(n4)
+            break
+    while True:
+        ro5 = input("Which rotor would you like to put in the 5th slot? (A whole number between 1 and 10)")
+        if len(ro5) >= 3 or int(ro5) <= 0 or int(ro5) >= 11:
+            print("Invalid input. Please enter a whole number between 1 and 10.")
+        else:
+            ro5 = int(ro5)
+            break
+    while True:
+        n5 = float(input("Which initial position would you like the 5th rotor in? (A whole number between 1 and 94)")) - 1
+        if int(n5) != float(n5) or int(n5) <= -1 or int(n5) >= 94:
+            print("Invalid input. Please enter a whole number between 1 and 94.")
+        else:
+            n5 = int(n5)
+            break
+if number_of_rotors > 5:
+    while True:
+        ro6 = input("Which rotor would you like to put in the 6th slot? (A whole number between 1 and 10)")
+        if len(ro6) >= 3 or int(ro6) <= 0 or int(ro6) >= 11:
+            print("Invalid input. Please enter a whole number between 1 and 10.")
+        else:
+            ro6 = int(ro6)
+            break
+    while True:
+        n6 = float(input("Which initial position would you like the 6th rotor in? (A whole number between 1 and 94)")) - 1
+        if int(n6) != float(n6) or int(n6) <= -1 or int(n6) >= 94:
+            print("Invalid input. Please enter a whole number between 1 and 94.")
+        else:
+            n6 = int(n6)
+            break
+    while True:
+        ro7 = input("Which rotor would you like to put in the 7th slot? (A whole number between 1 and 10)")
+        if len(ro7) >= 3 or int(ro7) <= 0 or int(ro7) >= 11:
+            print("Invalid input. Please enter a whole number between 1 and 10.")
+        else:
+            ro7 = int(ro7)
+            break
+    while True:
+        n7 = float(input("Which initial position would you like the 7th rotor in? (A whole number between 1 and 94)")) - 1
+        if int(n7) != float(n7) or int(n7) <= -1 or int(n7) >= 94:
+            print("Invalid input. Please enter a whole number between 1 and 94.")
+        else:
+            n7 = int(n7)
+            break
 while True:
     ref = input("Which reflector would you like to use? (A whole number between 1 and 4)")
     if len(ref) >= 2 or int(ref) <= 0 or int(ref) >= 5:
@@ -244,11 +266,11 @@ while True:
         ref = int(ref)
         break
 while True:
-    n4 = float(input("Which initial position would you like the reflector in? (A whole number between 1 and 94)")) - 1
-    if int(n4) != float(n4) or int(n4) <= -1 or int(n4) >= 94:
+    n8 = float(input("Which initial position would you like the reflector in? (A whole number between 1 and 94)")) - 1
+    if int(n8) != float(n8) or int(n8) <= -1 or int(n8) >= 94:
         print("Invalid input. Please enter a whole number between 1 and 26.")
     else:
-        n4 = int(n4)
+        n8 = int(n8)
         break
 
 orig = str(input("What text would you like to encode/decode?"))
@@ -257,13 +279,16 @@ orig_numeric = []
 for character in orig:
     number = ord(character) - 32
     orig_numeric.append(number)
-
-switch_select(ro1)
-_1switch = switch
-switch_select(ro2)
-_2switch = switch
-switch_select(ro3)
-_3switch = switch
+_1switch = _2switch = _3switch = _4switch = _5switch = _6switch = _7switch = []
+_1switch = switch_select(ro1)
+_2switch = switch_select(ro2)
+_3switch = switch_select(ro3)
+if number_of_rotors > 3:
+    _4switch = switch_select(ro4)
+    _5switch = switch_select(ro5)
+if number_of_rotors > 5:
+    _6switch = switch_select(ro6)
+    _7switch = switch_select(ro7)
 reflector_select(ref)
 
 output_numeric = []
@@ -271,7 +296,19 @@ for number in orig_numeric:
     rotor_action(ro1, n1, number)
     rotor_action(ro2, n2, acted_text)
     rotor_action(ro3, n3, acted_text)
-    reflector_action(reflector, n4, acted_text)
+    if number_of_rotors > 3:
+        rotor_action(ro4, n4, acted_text)
+        rotor_action(ro5, n5, acted_text)
+    if number_of_rotors > 5:
+        rotor_action(ro6, n6, acted_text)
+        rotor_action(ro7, n7, acted_text)
+    reflector_action(reflector, n8, acted_text)
+    if number_of_rotors > 5:
+        rotor_action_reverse(ro6, n6, acted_text)
+        rotor_action_reverse(ro7, n7, acted_text)
+    if number_of_rotors > 3:
+        rotor_action_reverse(ro4, n4, acted_text)
+        rotor_action_reverse(ro5, n5, acted_text)
     rotor_action_reverse(ro3, n3, acted_text)
     rotor_action_reverse(ro2, n2, acted_text)
     rotor_action_reverse(ro1, n1, acted_text)
@@ -283,17 +320,40 @@ for number in orig_numeric:
     if n1 == 94:
         n1 = 0
     if n1 in _1switch:
-        n2 = n2 + 1
+        n2 += 1
     if n2 == 94:
         n2 = 0
     if n2 in _2switch:
-        n3 = n3 + 1
+        n3 += 1
     if n3 == 94:
         n3 = 0
     if n3 in _3switch:
-        n4 = n4 + 1
+        if number_of_rotors > 3:
+            n4 = n4 + 1
+        else:
+            n8 += 1
     if n4 == 94:
         n4 = 0
+    if n4 in _4switch:
+        n5 += 1
+    if n5 == 94:
+        n5 = 0
+    if n5 in _5switch:
+        if number_of_rotors > 5:
+            n6 += 1
+        else:
+            n8 += 1
+    if n6 == 94:
+        n6 = 0
+    if n6 in _6switch:
+        n7 += 1
+    if n7 == 94:
+        n7 = 0
+    if n7 in _7switch:
+        n8 += 1
+    if n8 == 94:
+        n8 = 0
+
 
 output_char = []
 for number in output_numeric:
