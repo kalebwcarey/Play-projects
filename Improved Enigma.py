@@ -304,11 +304,11 @@ for number in orig_numeric:
         rotor_action(ro7, n7, acted_text)
     reflector_action(reflector, n8, acted_text)
     if number_of_rotors > 5:
-        rotor_action_reverse(ro6, n6, acted_text)
         rotor_action_reverse(ro7, n7, acted_text)
+        rotor_action_reverse(ro6, n6, acted_text)
     if number_of_rotors > 3:
-        rotor_action_reverse(ro4, n4, acted_text)
         rotor_action_reverse(ro5, n5, acted_text)
+        rotor_action_reverse(ro4, n4, acted_text)
     rotor_action_reverse(ro3, n3, acted_text)
     rotor_action_reverse(ro2, n2, acted_text)
     rotor_action_reverse(ro1, n1, acted_text)
@@ -316,7 +316,7 @@ for number in orig_numeric:
     output_numeric.append(acted_text)
 
     # rotor rotation code below
-    n1 = n1 + 1
+    n1 += 1
     if n1 == 94:
         n1 = 0
     if n1 in _1switch:
@@ -329,7 +329,7 @@ for number in orig_numeric:
         n3 = 0
     if n3 in _3switch:
         if number_of_rotors > 3:
-            n4 = n4 + 1
+            n4 += 1
         else:
             n8 += 1
     if n4 == 94:
